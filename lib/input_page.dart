@@ -25,7 +25,7 @@ class _InputPageState extends State<InputPage> {
               child: Row(
                 children: [
                   Expanded(
-                    // This custom card class is not showing content when I emulate.
+                    // This custom card class is not showing content when I try to emulate.
                     child: ReusableCard(
                       color: primaryColor,
                       cardChild: Container(
