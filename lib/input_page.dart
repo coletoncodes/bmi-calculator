@@ -25,11 +25,15 @@ class _InputPageState extends State<InputPage> {
               child: Row(
                 children: [
                   Expanded(
+                    // This custom card class is not showing content when I emulate.
                     child: ReusableCard(
                       color: primaryColor,
                       cardChild: Container(
                         child: Text('Test Text'),
                       ),
+
+                      // Below is the content I want to display inside this card.
+
                       // cardChild: Column(
                       //   mainAxisAlignment: MainAxisAlignment.center,
                       //   children: [
