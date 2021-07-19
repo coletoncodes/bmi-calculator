@@ -1,9 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'icon_content.dart';
+import 'reusable_card.dart';
 
+// Global Variables
 const bottomContainerHeight = 80.0;
-const primaryColor = Color(0xFF1D1E33);
 const bottomContainerColor = Color(0xffeb1555);
+
+enum Gender {
+  male,
+  female,
+}
 
 class InputPage extends StatefulWidget {
   @override
@@ -11,6 +18,8 @@ class InputPage extends StatefulWidget {
 }
 
 class _InputPageState extends State<InputPage> {
+  Gender selectedGender;
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -25,51 +34,51 @@ class _InputPageState extends State<InputPage> {
               child: Row(
                 children: [
                   Expanded(
-                    // This custom card class is not showing content when I try to emulate.
                     child: ReusableCard(
-                      color: primaryColor,
-                      cardChild: Container(
-                        child: Text('Test Text'),
+                      onPress: () {
+                        setState(() {
+                          selectedGender = Gender.male;
+                        });
+                      },
+                      color: selectedGender == Gender.male
+                          ? activeCardColor
+                          : inactiveCardColor,
+                      cardChild: IconContent(
+                        icon: FontAwesomeIcons.mars,
+                        label: 'male',
                       ),
-
-                      // Below is the content I want to display inside this card.
-
-                      // cardChild: Column(
-                      //   mainAxisAlignment: MainAxisAlignment.center,
-                      //   children: [
-                      //     Icon(FontAwesomeIcons.mars, size: 80.0),
-                      //     SizedBox(
-                      //       height: 15.0,
-                      //     ),
-                      //     Text(
-                      //       'MALE',
-                      //       style: TextStyle(
-                      //         fontSize: 18.0,
-                      //         color: Color(0xFF8D8E98),
-                      //       ),
-                      //     ),
-                      // ],
                     ),
                   ),
                   Expanded(
                     child: ReusableCard(
-                      color: primaryColor,
+                      onPress: () {
+                        setState(() {
+                          selectedGender = Gender.female;
+                        });
+                      },
+                      color: selectedGender == Gender.female
+                          ? activeCardColor
+                          : inactiveCardColor,
+                      cardChild: IconContent(
+                        icon: FontAwesomeIcons.venus,
+                        label: 'female',
+                      ),
                     ),
                   ),
                 ],
               ),
             ),
             Expanded(
-              child: ReusableCard(color: primaryColor),
+              child: ReusableCard(color: activeCardColor),
             ),
             Expanded(
               child: Row(
                 children: [
                   Expanded(
-                    child: ReusableCard(color: primaryColor),
+                    child: ReusableCard(color: activeCardColor),
                   ),
                   Expanded(
-                    child: ReusableCard(color: primaryColor),
+                    child: ReusableCard(color: activeCardColor),
                   ),
                 ],
               ),
@@ -82,24 +91,6 @@ class _InputPageState extends State<InputPage> {
             ),
           ],
         ),
-      ),
-    );
-  }
-}
-
-class ReusableCard extends StatelessWidget {
-  ReusableCard({@required this.color, this.cardChild});
-
-  final Color color;
-  final Widget cardChild;
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      margin: EdgeInsets.all(15.0),
-      decoration: BoxDecoration(
-        color: primaryColor,
-        borderRadius: BorderRadius.circular(10.0),
       ),
     );
   }
