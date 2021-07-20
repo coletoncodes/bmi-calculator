@@ -1,11 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'constants.dart';
 import 'icon_content.dart';
 import 'reusable_card.dart';
-
-// Global Variables
-const bottomContainerHeight = 80.0;
-const bottomContainerColor = Color(0xffeb1555);
 
 enum Gender {
   male,
@@ -19,6 +16,7 @@ class InputPage extends StatefulWidget {
 
 class _InputPageState extends State<InputPage> {
   Gender selectedGender;
+  int height = 60;
 
   @override
   Widget build(BuildContext context) {
@@ -29,6 +27,7 @@ class _InputPageState extends State<InputPage> {
           centerTitle: true,
         ),
         body: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             Expanded(
               child: Row(
@@ -41,8 +40,8 @@ class _InputPageState extends State<InputPage> {
                         });
                       },
                       color: selectedGender == Gender.male
-                          ? activeCardColor
-                          : inactiveCardColor,
+                          ? kActiveCardColor
+                          : kInactiveCardColor,
                       cardChild: IconContent(
                         icon: FontAwesomeIcons.mars,
                         label: 'male',
@@ -57,8 +56,8 @@ class _InputPageState extends State<InputPage> {
                         });
                       },
                       color: selectedGender == Gender.female
-                          ? activeCardColor
-                          : inactiveCardColor,
+                          ? kActiveCardColor
+                          : kInactiveCardColor,
                       cardChild: IconContent(
                         icon: FontAwesomeIcons.venus,
                         label: 'female',
@@ -69,29 +68,58 @@ class _InputPageState extends State<InputPage> {
               ),
             ),
             Expanded(
-              child: ReusableCard(color: activeCardColor),
+              child: ReusableCard(
+                color: kActiveCardColor,
+                cardChild: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      'HEIGHT',
+                      style: kLabelTextStyle,
+                    ),
+                    HeightRow(height: height),
+                    heightSlider(),
+                  ],
+                ),
+              ),
             ),
             Expanded(
               child: Row(
                 children: [
                   Expanded(
-                    child: ReusableCard(color: activeCardColor),
+                    child: ReusableCard(color: kActiveCardColor),
                   ),
                   Expanded(
-                    child: ReusableCard(color: activeCardColor),
+                    child: ReusableCard(color: kActiveCardColor),
                   ),
                 ],
               ),
             ),
             Container(
-              color: bottomContainerColor,
+              color: kBottomContainerColor,
               margin: EdgeInsets.only(top: 10.0),
               width: double.infinity,
-              height: bottomContainerHeight,
+              height: kBottomContainerHeight,
             ),
           ],
         ),
       ),
+    );
+  }
+
+  Slider heightSlider() {
+    return Slider(
+      value: height.toDouble(),
+      min: 30.0,
+      max: 80.0,
+      divisions: null,
+      activeColor: Color(0xFFEB1555),
+      inactiveColor: Color(0xff8d8e98),
+      onChanged: (double newValue) {
+        setState(() {
+          height = newValue.round();
+        });
+      },
     );
   }
 }

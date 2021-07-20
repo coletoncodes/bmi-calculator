@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
-const activeCardColor = Color(0xFF1D1E33);
-const inactiveCardColor = Color(0xFF111328);
+import 'constants.dart';
 
 class ReusableCard extends StatelessWidget {
   ReusableCard({@required this.color, this.cardChild, this.onPress});
@@ -24,4 +23,37 @@ class ReusableCard extends StatelessWidget {
       ),
     );
   }
+}
+
+class HeightRow extends StatelessWidget {
+  const HeightRow({
+    Key key,
+    @required this.height,
+  }) : super(key: key);
+
+  final int height;
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      textBaseline: TextBaseline.alphabetic,
+      crossAxisAlignment: CrossAxisAlignment.baseline,
+      children: [
+        Text(
+          height.toString(),
+          style: kLargeLabelTextStyle,
+        ),
+        SizedBox(
+          width: 5.0,
+        ),
+        Text(
+          'IN',
+          style: kLabelTextStyle,
+        ),
+      ],
+    );
+  }
+
+  
 }
