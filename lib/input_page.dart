@@ -77,8 +77,24 @@ class _InputPageState extends State<InputPage> {
                       'HEIGHT',
                       style: kLabelTextStyle,
                     ),
+
+                    // Center Slider saved as widget with a constant defined height.
                     HeightRow(height: height),
-                    heightSlider(),
+                    SliderTheme(
+                      data: SliderTheme.of(context).copyWith(
+                        inactiveTrackColor: Color(0XFF8D8E98),
+                        activeTrackColor: Colors.white,
+                        overlayColor: Color(0x29EB1555),
+                        thumbColor: Color(kSecondaryColor),
+                        thumbShape:
+                            RoundSliderThumbShape(enabledThumbRadius: 15.0),
+                        overlayShape:
+                            RoundSliderOverlayShape(overlayRadius: 30.0),
+                      ),
+
+                      // The custom slider used for this project saved as a widget in reusable_card.dart
+                      child: heightSlider(),
+                    ),
                   ],
                 ),
               ),
