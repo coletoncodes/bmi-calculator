@@ -1,24 +1,20 @@
-![App Brewery Banner](https://github.com/londonappbrewery/Images/blob/master/AppBreweryBanner.png)
 
+# What It Does
 
-# BMI Calculator 💪
+This is just a simple BMI calculator built with Flutter.
 
-## Our Goal
+**You can preview the app [here](https://coletoncodes-bmi-calculator.web.app).**
 
-The objective of this tutorial is to look at how we can customise Flutter Widgets to achieve our own beautiful user interface designs. If you have a designer on board, no matter how unconventional their designs are, we can create them using Flutter. 
+ This will open up a browser version of the application.
 
+# What I Learned
 
-## What you will create
+This project allowed me to find a design on Dribbble and build a UI similar to it. Thankfully, with Flutter it's easy to build custom widgets and UIs.
 
-We’re going to make a Body Mass Index Calculator inspired by the beautiful designs made by [Ruben Vaalt](https://dribbble.com/shots/4585382-Simple-BMI-Calculator). It will be a multi screen app with simple functionality but full-on custom styling. 
-
-![Finished App](https://github.com/londonappbrewery/Images/blob/master/bmi-calc-demo.gif)
-
-## What you will learn
-
-- How to use Flutter themes to create coherent branding. 
+**Some other skills I learned/used with this project:**
+- How to use Flutter themes to create coherent branding.
 - How to create multi-page apps using Flutter Routes and Navigator.
-- How to extract and refactor Flutter Widgets with a click of the button. 
+- How to extract and refactor Flutter Widgets with a click of the button.
 - How to pass functions as parameters and fields.
 - How to use the GestureDetector Widget to detect more than just a tap.
 - How to use custom colour palettes by using hex codes.
@@ -27,6 +23,14 @@ We’re going to make a Body Mass Index Calculator inspired by the beautiful des
 - Learn about composition vs. inheritance and the Flutter way of creating custom UI.
 - Understand the difference between const and final in Dart and when to use each.
 
->This is a companion project to The App Brewery's Complete Flutter Development Bootcamp, check out the full course at [www.appbrewery.co](https://www.appbrewery.co/)
 
-![End Banner](https://github.com/londonappbrewery/Images/blob/master/readme-end-banner.png)
+### Features & Ideas For The Future
+
+I would like to keep working on this idea and provide accurate calculations for both men and women. (Currently, you get the same result regardless of what you choose.) Or, create a similar app that calculates macros.
+
+# Contact Me
+
+* [Email](mailto:coletoncodes@gmail.com)
+* [LinkedIn](https://www.linkedin.com/in/coletongorecke/)
+* [Instagram](https://www.instagram.com/coletongorecke)
+* [Website](https://www.coletoncodes.com)
