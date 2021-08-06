@@ -3,7 +3,7 @@
 
 This is just a simple BMI calculator built with Flutter.
 
-**You can preview the app [here](https://coletoncodes-flutter-quiz-app.web.app/).**
+**You can preview the app [here](https://coletoncodes-bmi-calculator.web.app).**
 
  This will open up a browser version of the application.
 
@@ -26,7 +26,7 @@ This project allowed me to find a design on Dribbble and build a UI similar to i
 
 ### Features & Ideas For The Future
 
-I would like to keep working on this idea and provide accurate calculations for both men and women. (Currently, you get the same result regardless of what you choose.)
+I would like to keep working on this idea and provide accurate calculations for both men and women. (Currently, you get the same result regardless of what you choose.) Or, create a similar app that calculates macros.
 
 # Contact Me
 
