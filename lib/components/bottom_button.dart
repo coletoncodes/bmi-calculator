@@ -2,9 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:bmi_calculator/constants.dart';
 
 class BottomButton extends StatelessWidget {
-  BottomButton({@required this.onTap, @required this.buttonTitle});
+  // Using the 'required' keyword and specifying non-nullable types
+  const BottomButton({super.key, required this.onTap, required this.buttonTitle});
 
-  final Function onTap;
+  // Updated onTap to be a VoidCallback, which is a more specific type for functions that take no parameters and return void
+  final VoidCallback onTap;
   final String buttonTitle;
 
   @override
@@ -12,17 +14,17 @@ class BottomButton extends StatelessWidget {
     return GestureDetector(
       onTap: onTap,
       child: Container(
+        color: kBottomContainerColour,
+        margin: const EdgeInsets.only(top: 10.0),
+        padding: const EdgeInsets.only(bottom: 20.0),
+        width: double.infinity,
+        height: kBottomContainerHeight,
         child: Center(
           child: Text(
             buttonTitle,
             style: kLargeButtonTextStyle,
           ),
         ),
-        color: kBottomContainerColour,
-        margin: EdgeInsets.only(top: 10.0),
-        padding: EdgeInsets.only(bottom: 20.0),
-        width: double.infinity,
-        height: kBottomContainerHeight,
       ),
     );
   }
