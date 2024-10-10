@@ -20,7 +20,7 @@ class InputPageState extends State<InputPage> {
   Gender? selectedGender;
   int feet = 5;    // Feet component of height
   int inches = 6;  // Inches component of height
-  int weight = 60; // Weight in pounds
+  int weight = 150; // Weight in pounds
   int age = 20;
 
   int get totalHeightInInches => (feet * 12) + inches;
@@ -31,165 +31,175 @@ class InputPageState extends State<InputPage> {
       appBar: AppBar(
         title: const Text('BMI CALCULATOR'),
       ),
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: <Widget>[
-          Expanded(
-            child: Row(
-              children: <Widget>[
-                GenderCard(
-                  gender: Gender.male,
-                  selectedGender: selectedGender,
-                  onTap: () {
-                    setState(() {
-                      selectedGender = Gender.male;
-                    });
-                  },
-                ),
-                GenderCard(
-                  gender: Gender.female,
-                  selectedGender: selectedGender,
-                  onTap: () {
-                    setState(() {
-                      selectedGender = Gender.female;
-                    });
-                  },
-                ),
-              ],
-            ),
-          ),
-          Expanded(
-            child: ReusableCard(
-              color: kActiveCardColor,
-              cardChild: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: <Widget>[
-                  const Text(
-                    'HEIGHT',
-                    style: kLabelTextStyle,
+      body: LayoutBuilder(
+        builder: (context, constraints) {
+          return Column(
+            children: [
+              Expanded(
+                child: SingleChildScrollView(
+                  padding: EdgeInsets.only(
+                    bottom: MediaQuery.of(context).viewInsets.bottom,
                   ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.baseline,
-                    textBaseline: TextBaseline.alphabetic,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
                     children: <Widget>[
-                      Text(
-                        '$feet',  // Display feet
-                        style: kNumberTextStyle,
+                      Row(
+                        children: <Widget>[
+                          GenderCard(
+                            gender: Gender.male,
+                            selectedGender: selectedGender,
+                            onTap: () {
+                              setState(() {
+                                selectedGender = Gender.male;
+                              });
+                            },
+                          ),
+                          GenderCard(
+                            gender: Gender.female,
+                            selectedGender: selectedGender,
+                            onTap: () {
+                              setState(() {
+                                selectedGender = Gender.female;
+                              });
+                            },
+                          ),
+                        ],
                       ),
-                      const Text(
-                        'ft',
-                        style: kLabelTextStyle,
+                      ReusableCard(
+                        color: kActiveCardColor,
+                        cardChild: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: <Widget>[
+                            const Text(
+                              'HEIGHT',
+                              style: kLabelTextStyle,
+                            ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              crossAxisAlignment: CrossAxisAlignment.baseline,
+                              textBaseline: TextBaseline.alphabetic,
+                              children: <Widget>[
+                                Text(
+                                  '$feet',  // Display feet
+                                  style: kNumberTextStyle,
+                                ),
+                                const Text(
+                                  'ft',
+                                  style: kLabelTextStyle,
+                                ),
+                                const SizedBox(width: 10),
+                                Text(
+                                  '$inches',  // Display inches
+                                  style: kNumberTextStyle,
+                                ),
+                                const Text(
+                                  'in',
+                                  style: kLabelTextStyle,
+                                ),
+                              ],
+                            ),
+                            HeightSliders(
+                              feet: feet,
+                              inches: inches,
+                              onFeetChanged: (newFeet) {
+                                setState(() {
+                                  feet = newFeet;
+                                });
+                              },
+                              onInchesChanged: (newInches) {
+                                setState(() {
+                                  inches = newInches;
+                                });
+                              },
+                            ),
+                          ],
+                        ),
                       ),
-                      const SizedBox(width: 10),
-                      Text(
-                        '$inches',  // Display inches
-                        style: kNumberTextStyle,
-                      ),
-                      const Text(
-                        'in',
-                        style: kLabelTextStyle,
+                      Row(
+                        children: <Widget>[
+                          InputCard(
+                            label: 'WEIGHT',
+                            value: weight,
+                            unit: 'lbs',
+                            onIncrement: () {
+                              setState(() {
+                                weight++;
+                              });
+                            },
+                            onDecrement: () {
+                              setState(() {
+                                weight--;
+                              });
+                            },
+                            onTap: () {
+                              _showTextInputDialog(
+                                context,
+                                'Enter Weight',
+                                weight.toString(),
+                                (value) {
+                                  setState(() {
+                                    weight = int.parse(value);
+                                  });
+                                },
+                              );
+                            },
+                          ),
+                          InputCard(
+                            label: 'AGE',
+                            value: age,
+                            unit: 'Years',
+                            onIncrement: () {
+                              setState(() {
+                                age++;
+                              });
+                            },
+                            onDecrement: () {
+                              setState(() {
+                                age--;
+                              });
+                            },
+                            onTap: () {
+                              _showTextInputDialog(
+                                context,
+                                'Enter Age',
+                                age.toString(),
+                                (value) {
+                                  setState(() {
+                                    age = int.parse(value);
+                                  });
+                                },
+                              );
+                            },
+                          ),
+                        ],
                       ),
                     ],
                   ),
-                  HeightSliders(
-                    feet: feet,
-                    inches: inches,
-                    onFeetChanged: (newFeet) {
-                      setState(() {
-                        feet = newFeet;
-                      });
-                    },
-                    onInchesChanged: (newInches) {
-                      setState(() {
-                        inches = newInches;
-                      });
-                    },
-                  ),
-                ],
+                ),
               ),
-            ),
-          ),
-          Expanded(
-            child: Row(
-              children: <Widget>[
-                InputCard(
-                  label: 'WEIGHT',
-                  value: weight,
-                  unit: 'lbs',
-                  onIncrement: () {
-                    setState(() {
-                      weight++;
-                    });
-                  },
-                  onDecrement: () {
-                    setState(() {
-                      weight--;
-                    });
-                  },
-                  onTap: () {
-                    _showTextInputDialog(
-                      context,
-                      'Enter Weight',
-                      weight.toString(),
-                      (value) {
-                        setState(() {
-                          weight = int.parse(value);
-                        });
-                      },
-                    );
-                  },
-                ),
-                InputCard(
-                  label: 'AGE',
-                  value: age,
-                  onIncrement: () {
-                    setState(() {
-                      age++;
-                    });
-                  },
-                  onDecrement: () {
-                    setState(() {
-                      age--;
-                    });
-                  },
-                  onTap: () {
-                    _showTextInputDialog(
-                      context,
-                      'Enter Age',
-                      age.toString(),
-                      (value) {
-                        setState(() {
-                          age = int.parse(value);
-                        });
-                      },
-                    );
-                  },
-                ),
-              ],
-            ),
-          ),
-          BottomButton(
-            buttonTitle: 'CALCULATE',
-            onTap: () {
-              CalculatorBrain calc = CalculatorBrain(
-                height: totalHeightInInches,  // Use total height in inches
-                weight: weight,
-              );
+              BottomButton(
+                buttonTitle: 'CALCULATE',
+                onTap: () {
+                  CalculatorBrain calc = CalculatorBrain(
+                    height: totalHeightInInches,  // Use total height in inches
+                    weight: weight,
+                  );
 
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => ResultsPage(
-                    bmiResult: calc.calculateBMI(),
-                    resultText: calc.getResult(),
-                    interpretation: calc.getInterpretation(),
-                  ),
-                ),
-              );
-            },
-          ),
-        ],
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => ResultsPage(
+                        bmiResult: calc.calculateBMI(),
+                        resultText: calc.getResult(),
+                        interpretation: calc.getInterpretation(),
+                      ),
+                    ),
+                  );
+                },
+              ),
+            ],
+          );
+        },
       ),
     );
   }

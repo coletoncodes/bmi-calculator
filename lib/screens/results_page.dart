@@ -4,12 +4,11 @@ import 'package:bmi_calculator/components/reusable_card.dart';
 import 'package:bmi_calculator/components/bottom_button.dart';
 
 class ResultsPage extends StatelessWidget {
-  // Constructor with 'required' keyword for non-nullable fields
   const ResultsPage({
     super.key,
-    required this.interpretation,
     required this.bmiResult,
     required this.resultText,
+    required this.interpretation,
   });
 
   final String bmiResult;
@@ -39,7 +38,7 @@ class ResultsPage extends StatelessWidget {
           Expanded(
             flex: 5,
             child: ReusableCard(
-              color: kActiveCardColor, // Update to 'color'
+              color: kActiveCardColor,
               cardChild: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 crossAxisAlignment: CrossAxisAlignment.center,
@@ -57,6 +56,27 @@ class ResultsPage extends StatelessWidget {
                     textAlign: TextAlign.center,
                     style: kBodyTextStyle,
                   ),
+                  const SizedBox(height: 20),
+                  const Text(
+                    'BMI Categories:',
+                    style: kBodyTextStyle,
+                  ),
+                  const Text(
+                    '• Underweight: <18.5',
+                    style: kBodyTextStyle,
+                  ),
+                  const Text(
+                    '• Normal weight: 18.5–24.9',
+                    style: kBodyTextStyle,
+                  ),
+                  const Text(
+                    '• Overweight: 25–29.9',
+                    style: kBodyTextStyle,
+                  ),
+                  const Text(
+                    '• Obesity: BMI of 30 or greater',
+                    style: kBodyTextStyle,
+                  ),
                 ],
               ),
             ),
@@ -66,7 +86,7 @@ class ResultsPage extends StatelessWidget {
             onTap: () {
               Navigator.pop(context);
             },
-          )
+          ),
         ],
       ),
     );
