@@ -4,10 +4,12 @@ import 'package:bmi_calculator/components/reusable_card.dart';
 import 'package:bmi_calculator/components/bottom_button.dart';
 
 class ResultsPage extends StatelessWidget {
-  ResultsPage(
-      {@required this.interpretation,
-      @required this.bmiResult,
-      @required this.resultText});
+  const ResultsPage({
+    super.key,
+    required this.bmiResult,
+    required this.resultText,
+    required this.interpretation,
+  });
 
   final String bmiResult;
   final String resultText;
@@ -17,7 +19,7 @@ class ResultsPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('BMI CALCULATOR'),
+        title: const Text('BMI CALCULATOR'),
       ),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -25,9 +27,9 @@ class ResultsPage extends StatelessWidget {
         children: <Widget>[
           Expanded(
             child: Container(
-              padding: EdgeInsets.all(15.0),
+              padding: const EdgeInsets.all(15.0),
               alignment: Alignment.bottomLeft,
-              child: Text(
+              child: const Text(
                 'Your Result',
                 style: kTitleTextStyle,
               ),
@@ -36,7 +38,7 @@ class ResultsPage extends StatelessWidget {
           Expanded(
             flex: 5,
             child: ReusableCard(
-              colour: kActiveCardColour,
+              color: kActiveCardColor,
               cardChild: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 crossAxisAlignment: CrossAxisAlignment.center,
@@ -54,6 +56,27 @@ class ResultsPage extends StatelessWidget {
                     textAlign: TextAlign.center,
                     style: kBodyTextStyle,
                   ),
+                  const SizedBox(height: 20),
+                  const Text(
+                    'BMI Categories:',
+                    style: kBodyTextStyle,
+                  ),
+                  const Text(
+                    '• Underweight: <18.5',
+                    style: kBodyTextStyle,
+                  ),
+                  const Text(
+                    '• Normal weight: 18.5–24.9',
+                    style: kBodyTextStyle,
+                  ),
+                  const Text(
+                    '• Overweight: 25–29.9',
+                    style: kBodyTextStyle,
+                  ),
+                  const Text(
+                    '• Obesity: BMI of 30 or greater',
+                    style: kBodyTextStyle,
+                  ),
                 ],
               ),
             ),
@@ -63,7 +86,7 @@ class ResultsPage extends StatelessWidget {
             onTap: () {
               Navigator.pop(context);
             },
-          )
+          ),
         ],
       ),
     );

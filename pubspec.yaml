@@ -1,21 +1,20 @@
 name: bmi_calculator
-description: A basic BMI calculator built with Flutter.
-
-version: 1.0.0+1
+description: "A new Flutter project."
+publish_to: 'none'
+version: 0.1.0
 
 environment:
-  sdk: ">=2.1.0 <3.0.0"
+  sdk: ^3.5.3
 
 dependencies:
   flutter:
     sdk: flutter
-
-  cupertino_icons: ^0.1.2
-  font_awesome_flutter: ^9.1.0
+  font_awesome_flutter: ^9.0.0
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
+  flutter_lints: ^4.0.0
 
 flutter:
   uses-material-design: true
