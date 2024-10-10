@@ -95,23 +95,23 @@ flutter devices
 
 ### iPhone Screenshots
 
-![iPhone Input Page](./assets/iphone-input-page-screenshot.png)
+![iPhone Input Page](/.assets/iphone-input-page-screenshot.png)
 
-![iPhone Result Page](./assets/iphone-result-page-screenshot.png)
+![iPhone Result Page](/.assets/iphone-result-page-screenshot.png)
 
 ### iPhone Recordings
 
-![iPhone Demo](./assets/iphone-recording.gif)
+![iPhone Demo](/.assets/iphone-recording.gif)
 
 ### Android Screenshots
 
-![Android Input Page](./assets/android-input-page-screenshot.png)
+![Android Input Page](/.assets/android-input-page-screenshot.png)
 
-![Android Result Page](./assets/android-result-page-screenshot.png)
+![Android Result Page](/.assets/android-result-page-screenshot.png)
 
 ### Android Recordings
 
-![Android Demo](./assets/android-recording.gif)
+![Android Demo](/.assets/android-recording.gif)
 
 ## Contact
 ![Connect With Me On LinkedIn](https://www.linkedin.com/in/coletongorecke/)
