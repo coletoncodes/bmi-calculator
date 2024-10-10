@@ -91,8 +91,16 @@ flutter devices
 - Dart: Programming language for Flutter.
 - Font Awesome Flutter: For icons used in the app.
 
-## 📱 Screenshots
+## 📱 Media
 
-### [Insert iOS Screenshot]()
+## iPhone Screenshots
+
+![iPhone Input Page](./assets/iphone-input-page-screenshot.png)
+
+![iPhone Result Page](./assets/iphone-result-page-screenshot.png)
+
+## iPhone Recordings
+
+![iPhone Demo](./assets/iphone-recording.mp4)
 
 ### [Insert Android Screenshot]()
